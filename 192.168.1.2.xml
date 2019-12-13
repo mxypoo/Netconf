@@ -1,0 +1,23 @@
+    vlans_change_filter = '''
+                          <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+                             <top xmlns="http://www.h3c.com/netconf/config:1.0">
+                                 <VLAN>
+                                    <VLANs>
+                                       <VLANID>
+                                          <ID>999</ID>
+                                          <Description>test</Description>
+                                          <Name>test</Name>
+                                       </VLANID>
+                                    </VLANs>
+                                    <TrunkInterfaces>
+                                       <Interface>
+                                          <IfIndex>2</IfIndex>
+                                          <PermitVlanList>999</PermitVlanList>
+                                          <PVID>999</PVID>
+                                       </Interface>
+                                    </TrunkInterfaces>
+                                 </VLAN>
+                             </top>
+                          </config> 
+                          '''
+    c= m.edit_config(target='running',config=vlans_change_filter,default_operation='replace');
